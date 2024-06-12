@@ -6,12 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BottomSheetDelegate.h"
-#import "BotSheet.h"
 
-@interface ViewController : UIViewController <BottomSheetDelegate>
-
-- (instancetype)initWithMainViewController:(UIViewController *)mainViewController
-                        sheetViewController:(UIViewController<BotSheet> *)sheetViewController;
+@interface ViewController : UIViewController
 
 @end

@@ -16,7 +16,7 @@ static CGFloat const cornerRadius = 12.0;
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = UIColor.whiteColor;
         self.layer.cornerRadius = cornerRadius;
         self.layer.maskedCorners = kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner;
     }

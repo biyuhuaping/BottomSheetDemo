@@ -61,10 +61,10 @@ static NSString *const reuseIdentifier = @"cell";
     CGFloat pulledUpOffset = 0;
     CGFloat pulledDownOffset = -maxVisibleContentHeight;
     
-    if (scrollView.contentOffset.y < -420) {
-        targetContentOffset->y = -800;
-        return;
-    }
+//    if (scrollView.contentOffset.y < -420) {
+//        targetContentOffset->y = -800;
+//        return;
+//    }
     
     if (targetOffset >= pulledDownOffset && targetOffset <= pulledUpOffset) {
         if (velocity.y < 0) {

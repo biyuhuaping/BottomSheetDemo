@@ -6,8 +6,6 @@
 //
 
 #import "AppDelegate.h"
-#import "MapViewController.h"
-#import "CountriesTableViewController.h"
 #import "ViewController.h"
 
 @interface AppDelegate ()
@@ -24,11 +22,8 @@
     }else{
         NSLog(@"未越狱");
     }
-    
-    MapViewController *mapVC = [[MapViewController alloc]init];
-    CountriesTableViewController *shortcutsVC = [[CountriesTableViewController alloc]init];
-    
-    self.window.rootViewController = [[ViewController alloc]initWithMainViewController:mapVC sheetViewController:shortcutsVC];
+
+    self.window.rootViewController = [[ViewController alloc]init];
     // 显示窗口
     [self.window makeKeyAndVisible];
     return YES;

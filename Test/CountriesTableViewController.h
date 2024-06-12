@@ -6,14 +6,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BotSheet.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol SheetDelegate <NSObject>
+- (void)bottomSheet:(id)bottomSheet didScrollTo:(CGPoint)contentOffset;
+@end
 
-@interface CountriesTableViewController : UITableViewController <BotSheet>
 
-@property (nonatomic, weak) id<BottomSheetDelegate> delegate;
+
+@interface CountriesTableViewController : UITableViewController
+
+@property (nonatomic, weak) id<SheetDelegate> delegate;
 
 @end
 
