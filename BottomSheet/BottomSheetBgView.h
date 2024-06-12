@@ -1,5 +1,5 @@
 //
-//  BottomSheetBackgroundView.h
+//  BottomSheetBgView.h
 //  Test
 //
 //  Created by ZB on 2024/6/11.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BottomSheetBackgroundView : UIView
+@interface BottomSheetBgView : UIView
 
 @end
 

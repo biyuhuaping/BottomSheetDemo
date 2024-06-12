@@ -1,31 +1,38 @@
 //
-//  CountriesTableViewController.m
+//  TableViewController.m
 //  Test
 //
 //  Created by ZB on 2024/6/11.
 //
 
-#import "CountriesTableViewController.h"
+#import "TableViewController.h"
 
 static CGFloat const maxVisibleContentHeight = 400.0;
 static NSInteger const numberOfCountries = 20;
 static NSString *const reuseIdentifier = @"cell";
 
-@interface CountriesTableViewController ()
+@interface TableViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) NSArray<NSString *> *countries;
-
+//@property (nonatomic, strong) UITableView *tableView;
 @end
 
-@implementation CountriesTableViewController
+@implementation TableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = UIColor.clearColor;
+    
+//    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 150, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 150)];
+//    self.tableView.delegate = self;
+//    self.tableView.dataSource = self;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:reuseIdentifier];
     self.tableView.contentInset = UIEdgeInsetsMake(maxVisibleContentHeight, 0, 0, 0);
     self.tableView.backgroundColor = UIColor.clearColor;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.decelerationRate = UIScrollViewDecelerationRateFast;
+    self.tableView.layer.maskedCorners = kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner;
+//    [self.view addSubview:self.tableView];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -40,12 +47,12 @@ static NSString *const reuseIdentifier = @"cell";
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return 30;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-    cell.textLabel.text = @"112121";
+    cell.textLabel.text = [NSString stringWithFormat:@"row: %ld", (long)indexPath.row];
     cell.backgroundColor = UIColor.clearColor;
     return cell;
 }
@@ -55,7 +62,6 @@ static NSString *const reuseIdentifier = @"cell";
 }
 
 #pragma mark - Scroll view delegate
-
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
     CGFloat targetOffset = targetContentOffset->y;
     CGFloat pulledUpOffset = 0;

@@ -1,7 +1,7 @@
 #import "ViewController.h"
 #import <MapKit/MapKit.h>
-#import "BottomSheetBackgroundView.h"
-#import "CountriesTableViewController.h"
+#import "BottomSheetBgView.h"
+#import "TableViewController.h"
 
 @interface ViewController ()<SheetDelegate>
 
@@ -12,7 +12,7 @@
 @end
 
 @implementation ViewController{
-    BottomSheetBackgroundView *_sheetBgView;
+    BottomSheetBgView *_sheetBgView;
     NSLayoutConstraint *_sheetBgTopConstraint;
 }
 
@@ -22,19 +22,21 @@
     self.mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.mapView];
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
-    [self setupViews];
 }
 
 - (void)bottomSheet:(id)bottomSheet didScrollTo:(CGPoint)contentOffset {
     self.topDistance = MAX(0, -contentOffset.y);
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self showBottomView];
+}
+
 #pragma mark - Private Methods
 
-- (void)setupViews {
+- (void)showBottomView {
     // The sheet background
-    _sheetBgView = [[BottomSheetBackgroundView alloc] init];
+    _sheetBgView = [[BottomSheetBgView alloc] init];
     [self.view addSubview:_sheetBgView];
     _sheetBgView.translatesAutoresizingMaskIntoConstraints = NO;
     _sheetBgTopConstraint = [_sheetBgView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor];
@@ -46,7 +48,7 @@
     ]];
     
     // tableView视图一直延伸到状态栏
-    CountriesTableViewController *shortcutsVC = [[CountriesTableViewController alloc] init];
+    TableViewController *shortcutsVC = [[TableViewController alloc] init];
     shortcutsVC.delegate = self;
     [self addChildViewController:shortcutsVC];
     self.sheetView = shortcutsVC.view;

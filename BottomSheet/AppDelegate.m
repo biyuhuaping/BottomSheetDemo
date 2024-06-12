@@ -22,7 +22,7 @@
     }else{
         NSLog(@"未越狱");
     }
-
+    self.window.backgroundColor = UIColor.clearColor;
     self.window.rootViewController = [[ViewController alloc]init];
     // 显示窗口
     [self.window makeKeyAndVisible];

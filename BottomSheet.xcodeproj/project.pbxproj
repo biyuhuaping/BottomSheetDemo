@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		395C50E82C1849E100B1DD16 /* BottomSheetBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 395C50E52C1849E100B1DD16 /* BottomSheetBackgroundView.m */; };
-		395C50E92C1849E100B1DD16 /* CountriesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 395C50E62C1849E100B1DD16 /* CountriesTableViewController.m */; };
+		395C50E82C1849E100B1DD16 /* BottomSheetBgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 395C50E52C1849E100B1DD16 /* BottomSheetBgView.m */; };
+		395C50E92C1849E100B1DD16 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 395C50E62C1849E100B1DD16 /* TableViewController.m */; };
 		3969BFE52869AF9C008EA3DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969BFE42869AF9C008EA3DC /* AppDelegate.m */; };
 		3969BFEB2869AF9C008EA3DC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969BFEA2869AF9C008EA3DC /* ViewController.m */; };
 		3969BFEE2869AF9C008EA3DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3969BFEC2869AF9C008EA3DC /* Main.storyboard */; };
@@ -20,11 +20,11 @@
 
 /* Begin PBXFileReference section */
 		1CC0A9A90071E4AAA0BF7A19 /* libPods-Test.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Test.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		395C50DF2C1849C300B1DD16 /* BottomSheetBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomSheetBackgroundView.h; sourceTree = "<group>"; };
-		395C50E32C1849C300B1DD16 /* CountriesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountriesTableViewController.h; sourceTree = "<group>"; };
-		395C50E52C1849E100B1DD16 /* BottomSheetBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomSheetBackgroundView.m; sourceTree = "<group>"; };
-		395C50E62C1849E100B1DD16 /* CountriesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountriesTableViewController.m; sourceTree = "<group>"; };
-		3969BFE02869AF9C008EA3DC /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		395C50DF2C1849C300B1DD16 /* BottomSheetBgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomSheetBgView.h; sourceTree = "<group>"; };
+		395C50E32C1849C300B1DD16 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		395C50E52C1849E100B1DD16 /* BottomSheetBgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomSheetBgView.m; sourceTree = "<group>"; };
+		395C50E62C1849E100B1DD16 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		3969BFE02869AF9C008EA3DC /* BottomSheet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BottomSheet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3969BFE32869AF9C008EA3DC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3969BFE42869AF9C008EA3DC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3969BFE92869AF9C008EA3DC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -34,8 +34,6 @@
 		3969BFF22869AF9E008EA3DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3969BFF42869AF9E008EA3DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3969BFF52869AF9E008EA3DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		4781E321E179EE2B6F760281 /* Pods-Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test.release.xcconfig"; path = "Target Support Files/Pods-Test/Pods-Test.release.xcconfig"; sourceTree = "<group>"; };
-		57DF133BB82F4132671B6079 /* Pods-Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test.debug.xcconfig"; path = "Target Support Files/Pods-Test/Pods-Test.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,9 +59,8 @@
 		3969BFD72869AF9C008EA3DC = {
 			isa = PBXGroup;
 			children = (
-				3969BFE22869AF9C008EA3DC /* Test */,
+				3969BFE22869AF9C008EA3DC /* BottomSheet */,
 				3969BFE12869AF9C008EA3DC /* Products */,
-				8105F6A2FCDA1DC3C16B999C /* Pods */,
 				288B5AC893DD17B4086AE977 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -71,46 +68,37 @@
 		3969BFE12869AF9C008EA3DC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3969BFE02869AF9C008EA3DC /* Test.app */,
+				3969BFE02869AF9C008EA3DC /* BottomSheet.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3969BFE22869AF9C008EA3DC /* Test */ = {
+		3969BFE22869AF9C008EA3DC /* BottomSheet */ = {
 			isa = PBXGroup;
 			children = (
 				3969BFE32869AF9C008EA3DC /* AppDelegate.h */,
 				3969BFE42869AF9C008EA3DC /* AppDelegate.m */,
 				3969BFE92869AF9C008EA3DC /* ViewController.h */,
 				3969BFEA2869AF9C008EA3DC /* ViewController.m */,
-				395C50DF2C1849C300B1DD16 /* BottomSheetBackgroundView.h */,
-				395C50E52C1849E100B1DD16 /* BottomSheetBackgroundView.m */,
-				395C50E32C1849C300B1DD16 /* CountriesTableViewController.h */,
-				395C50E62C1849E100B1DD16 /* CountriesTableViewController.m */,
+				395C50DF2C1849C300B1DD16 /* BottomSheetBgView.h */,
+				395C50E52C1849E100B1DD16 /* BottomSheetBgView.m */,
+				395C50E32C1849C300B1DD16 /* TableViewController.h */,
+				395C50E62C1849E100B1DD16 /* TableViewController.m */,
 				3969BFF42869AF9E008EA3DC /* Info.plist */,
 				3969BFEF2869AF9E008EA3DC /* Assets.xcassets */,
 				3969BFF12869AF9E008EA3DC /* LaunchScreen.storyboard */,
 				3969BFF52869AF9E008EA3DC /* main.m */,
 				3969BFEC2869AF9C008EA3DC /* Main.storyboard */,
 			);
-			path = Test;
-			sourceTree = "<group>";
-		};
-		8105F6A2FCDA1DC3C16B999C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				57DF133BB82F4132671B6079 /* Pods-Test.debug.xcconfig */,
-				4781E321E179EE2B6F760281 /* Pods-Test.release.xcconfig */,
-			);
-			path = Pods;
+			path = BottomSheet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3969BFDF2869AF9C008EA3DC /* Test */ = {
+		3969BFDF2869AF9C008EA3DC /* BottomSheet */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3969BFF92869AF9E008EA3DC /* Build configuration list for PBXNativeTarget "Test" */;
+			buildConfigurationList = 3969BFF92869AF9E008EA3DC /* Build configuration list for PBXNativeTarget "BottomSheet" */;
 			buildPhases = (
 				EB44678AC6DFAA166BE3A951 /* [CP] Check Pods Manifest.lock */,
 				3969BFDC2869AF9C008EA3DC /* Sources */,
@@ -122,9 +110,9 @@
 			);
 			dependencies = (
 			);
-			name = Test;
+			name = BottomSheet;
 			productName = Test;
-			productReference = 3969BFE02869AF9C008EA3DC /* Test.app */;
+			productReference = 3969BFE02869AF9C008EA3DC /* BottomSheet.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -141,7 +129,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3969BFDB2869AF9C008EA3DC /* Build configuration list for PBXProject "Test" */;
+			buildConfigurationList = 3969BFDB2869AF9C008EA3DC /* Build configuration list for PBXProject "BottomSheet" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -154,7 +142,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3969BFDF2869AF9C008EA3DC /* Test */,
+				3969BFDF2869AF9C008EA3DC /* BottomSheet */,
 			);
 		};
 /* End PBXProject section */
@@ -220,10 +208,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3969BFEB2869AF9C008EA3DC /* ViewController.m in Sources */,
-				395C50E92C1849E100B1DD16 /* CountriesTableViewController.m in Sources */,
+				395C50E92C1849E100B1DD16 /* TableViewController.m in Sources */,
 				3969BFE52869AF9C008EA3DC /* AppDelegate.m in Sources */,
 				3969BFF62869AF9E008EA3DC /* main.m in Sources */,
-				395C50E82C1849E100B1DD16 /* BottomSheetBackgroundView.m in Sources */,
+				395C50E82C1849E100B1DD16 /* BottomSheetBgView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,7 +349,6 @@
 		};
 		3969BFFA2869AF9E008EA3DC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57DF133BB82F4132671B6079 /* Pods-Test.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -390,7 +377,6 @@
 		};
 		3969BFFB2869AF9E008EA3DC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4781E321E179EE2B6F760281 /* Pods-Test.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -420,7 +406,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3969BFDB2869AF9C008EA3DC /* Build configuration list for PBXProject "Test" */ = {
+		3969BFDB2869AF9C008EA3DC /* Build configuration list for PBXProject "BottomSheet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3969BFF72869AF9E008EA3DC /* Debug */,
@@ -429,7 +415,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3969BFF92869AF9E008EA3DC /* Build configuration list for PBXNativeTarget "Test" */ = {
+		3969BFF92869AF9E008EA3DC /* Build configuration list for PBXNativeTarget "BottomSheet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3969BFFA2869AF9E008EA3DC /* Debug */,

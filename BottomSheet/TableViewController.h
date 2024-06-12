@@ -1,5 +1,5 @@
 //
-//  CountriesTableViewController.h
+//  TableViewController.h
 //  Test
 //
 //  Created by ZB on 2024/6/11.
@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 
-@interface CountriesTableViewController : UITableViewController
+@interface TableViewController : UITableViewController
 
 @property (nonatomic, weak) id<SheetDelegate> delegate;
 
