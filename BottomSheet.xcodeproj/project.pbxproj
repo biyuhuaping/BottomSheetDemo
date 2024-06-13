@@ -16,6 +16,7 @@
 		3969BFF02869AF9E008EA3DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3969BFEF2869AF9E008EA3DC /* Assets.xcassets */; };
 		3969BFF32869AF9E008EA3DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3969BFF12869AF9E008EA3DC /* LaunchScreen.storyboard */; };
 		3969BFF62869AF9E008EA3DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969BFF52869AF9E008EA3DC /* main.m */; };
+		39B8C00D2C1A8A280098914E /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8C00C2C1A8A280098914E /* ModalViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,8 @@
 		3969BFF22869AF9E008EA3DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3969BFF42869AF9E008EA3DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3969BFF52869AF9E008EA3DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		39B8C00B2C1A8A280098914E /* ModalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModalViewController.h; sourceTree = "<group>"; };
+		39B8C00C2C1A8A280098914E /* ModalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModalViewController.m; sourceTree = "<group>"; };
 		4754B614374214BC2008BC35 /* libPods-BottomSheet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BottomSheet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D8D8C003D457F6AC3611E83 /* Pods-BottomSheet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BottomSheet.debug.xcconfig"; path = "Target Support Files/Pods-BottomSheet/Pods-BottomSheet.debug.xcconfig"; sourceTree = "<group>"; };
 		E367440E09DDDB57906CBE08 /* Pods-BottomSheet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BottomSheet.release.xcconfig"; path = "Target Support Files/Pods-BottomSheet/Pods-BottomSheet.release.xcconfig"; sourceTree = "<group>"; };
@@ -92,6 +95,8 @@
 				3969BFE42869AF9C008EA3DC /* AppDelegate.m */,
 				3969BFE92869AF9C008EA3DC /* ViewController.h */,
 				3969BFEA2869AF9C008EA3DC /* ViewController.m */,
+				39B8C00B2C1A8A280098914E /* ModalViewController.h */,
+				39B8C00C2C1A8A280098914E /* ModalViewController.m */,
 				395C50DF2C1849C300B1DD16 /* BottomSheetBgView.h */,
 				395C50E52C1849E100B1DD16 /* BottomSheetBgView.m */,
 				395C50E32C1849C300B1DD16 /* TableViewController.h */,
@@ -116,7 +121,6 @@
 				3969BFDC2869AF9C008EA3DC /* Sources */,
 				3969BFDD2869AF9C008EA3DC /* Frameworks */,
 				3969BFDE2869AF9C008EA3DC /* Resources */,
-				088332D2976DC064A99D0E11 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -173,23 +177,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		088332D2976DC064A99D0E11 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BottomSheet/Pods-BottomSheet-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BottomSheet/Pods-BottomSheet-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BottomSheet/Pods-BottomSheet-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		EB44678AC6DFAA166BE3A951 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -221,6 +208,7 @@
 			files = (
 				3969BFEB2869AF9C008EA3DC /* ViewController.m in Sources */,
 				395C50E92C1849E100B1DD16 /* TableViewController.m in Sources */,
+				39B8C00D2C1A8A280098914E /* ModalViewController.m in Sources */,
 				3969BFE52869AF9C008EA3DC /* AppDelegate.m in Sources */,
 				3969BFF62869AF9E008EA3DC /* main.m in Sources */,
 				395C50E82C1849E100B1DD16 /* BottomSheetBgView.m in Sources */,
