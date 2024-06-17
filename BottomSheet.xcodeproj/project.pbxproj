@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		16A4B8209BFE4A98668DBA01 /* libPods-BottomSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4754B614374214BC2008BC35 /* libPods-BottomSheet.a */; };
-		395C50E82C1849E100B1DD16 /* BottomSheetBgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 395C50E52C1849E100B1DD16 /* BottomSheetBgView.m */; };
-		395C50E92C1849E100B1DD16 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 395C50E62C1849E100B1DD16 /* TableViewController.m */; };
+		393CBD732C1C24FC00F0EDDA /* ZBChangeNetWorkSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 393CBD712C1C24FC00F0EDDA /* ZBChangeNetWorkSheetView.m */; };
+		393CBD762C1C252700F0EDDA /* ZBChangeNetWorkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 393CBD752C1C252700F0EDDA /* ZBChangeNetWorkCell.m */; };
+		393CBD7B2C1FDF9200F0EDDA /* SimpleModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 393CBD7A2C1FDF9200F0EDDA /* SimpleModalViewController.m */; };
+		393CBD7E2C1FDFB200F0EDDA /* SimpleModalAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 393CBD7D2C1FDFB200F0EDDA /* SimpleModalAnimator.m */; };
 		3969BFE52869AF9C008EA3DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969BFE42869AF9C008EA3DC /* AppDelegate.m */; };
 		3969BFEB2869AF9C008EA3DC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969BFEA2869AF9C008EA3DC /* ViewController.m */; };
 		3969BFEE2869AF9C008EA3DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3969BFEC2869AF9C008EA3DC /* Main.storyboard */; };
@@ -20,10 +22,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		395C50DF2C1849C300B1DD16 /* BottomSheetBgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomSheetBgView.h; sourceTree = "<group>"; };
-		395C50E32C1849C300B1DD16 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
-		395C50E52C1849E100B1DD16 /* BottomSheetBgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomSheetBgView.m; sourceTree = "<group>"; };
-		395C50E62C1849E100B1DD16 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		393CBD712C1C24FC00F0EDDA /* ZBChangeNetWorkSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBChangeNetWorkSheetView.m; sourceTree = "<group>"; };
+		393CBD722C1C24FC00F0EDDA /* ZBChangeNetWorkSheetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBChangeNetWorkSheetView.h; sourceTree = "<group>"; };
+		393CBD742C1C252700F0EDDA /* ZBChangeNetWorkCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBChangeNetWorkCell.h; sourceTree = "<group>"; };
+		393CBD752C1C252700F0EDDA /* ZBChangeNetWorkCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBChangeNetWorkCell.m; sourceTree = "<group>"; };
+		393CBD792C1FDF9200F0EDDA /* SimpleModalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleModalViewController.h; sourceTree = "<group>"; };
+		393CBD7A2C1FDF9200F0EDDA /* SimpleModalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleModalViewController.m; sourceTree = "<group>"; };
+		393CBD7C2C1FDFB200F0EDDA /* SimpleModalAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleModalAnimator.h; sourceTree = "<group>"; };
+		393CBD7D2C1FDFB200F0EDDA /* SimpleModalAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleModalAnimator.m; sourceTree = "<group>"; };
 		3969BFE02869AF9C008EA3DC /* BottomSheet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BottomSheet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3969BFE32869AF9C008EA3DC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3969BFE42869AF9C008EA3DC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -70,6 +76,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		393CBD772C1C252F00F0EDDA /* ZBchangeNet */ = {
+			isa = PBXGroup;
+			children = (
+				393CBD742C1C252700F0EDDA /* ZBChangeNetWorkCell.h */,
+				393CBD752C1C252700F0EDDA /* ZBChangeNetWorkCell.m */,
+				393CBD722C1C24FC00F0EDDA /* ZBChangeNetWorkSheetView.h */,
+				393CBD712C1C24FC00F0EDDA /* ZBChangeNetWorkSheetView.m */,
+			);
+			path = ZBchangeNet;
+			sourceTree = "<group>";
+		};
+		393CBD782C1FDF7100F0EDDA /* PanModal */ = {
+			isa = PBXGroup;
+			children = (
+				393CBD792C1FDF9200F0EDDA /* SimpleModalViewController.h */,
+				393CBD7A2C1FDF9200F0EDDA /* SimpleModalViewController.m */,
+				393CBD7C2C1FDFB200F0EDDA /* SimpleModalAnimator.h */,
+				393CBD7D2C1FDFB200F0EDDA /* SimpleModalAnimator.m */,
+			);
+			path = PanModal;
+			sourceTree = "<group>";
+		};
 		3969BFD72869AF9C008EA3DC = {
 			isa = PBXGroup;
 			children = (
@@ -97,10 +125,8 @@
 				3969BFEA2869AF9C008EA3DC /* ViewController.m */,
 				39B8C00B2C1A8A280098914E /* ModalViewController.h */,
 				39B8C00C2C1A8A280098914E /* ModalViewController.m */,
-				395C50DF2C1849C300B1DD16 /* BottomSheetBgView.h */,
-				395C50E52C1849E100B1DD16 /* BottomSheetBgView.m */,
-				395C50E32C1849C300B1DD16 /* TableViewController.h */,
-				395C50E62C1849E100B1DD16 /* TableViewController.m */,
+				393CBD782C1FDF7100F0EDDA /* PanModal */,
+				393CBD772C1C252F00F0EDDA /* ZBchangeNet */,
 				3969BFF42869AF9E008EA3DC /* Info.plist */,
 				3969BFEF2869AF9E008EA3DC /* Assets.xcassets */,
 				3969BFF12869AF9E008EA3DC /* LaunchScreen.storyboard */,
@@ -206,12 +232,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				393CBD732C1C24FC00F0EDDA /* ZBChangeNetWorkSheetView.m in Sources */,
 				3969BFEB2869AF9C008EA3DC /* ViewController.m in Sources */,
-				395C50E92C1849E100B1DD16 /* TableViewController.m in Sources */,
 				39B8C00D2C1A8A280098914E /* ModalViewController.m in Sources */,
+				393CBD7B2C1FDF9200F0EDDA /* SimpleModalViewController.m in Sources */,
+				393CBD762C1C252700F0EDDA /* ZBChangeNetWorkCell.m in Sources */,
+				393CBD7E2C1FDFB200F0EDDA /* SimpleModalAnimator.m in Sources */,
 				3969BFE52869AF9C008EA3DC /* AppDelegate.m in Sources */,
 				3969BFF62869AF9E008EA3DC /* main.m in Sources */,
-				395C50E82C1849E100B1DD16 /* BottomSheetBgView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,7 +383,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XAS28YW9D6;
+				DEVELOPMENT_TEAM = KL9RJQL326;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BottomSheet/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -369,7 +397,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.Test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yes.GanodermaDiagnosis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -384,7 +412,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XAS28YW9D6;
+				DEVELOPMENT_TEAM = KL9RJQL326;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BottomSheet/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -398,7 +426,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.Test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yes.GanodermaDiagnosis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";

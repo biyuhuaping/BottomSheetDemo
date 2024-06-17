@@ -1,18 +1,20 @@
 //
-//  ModalViewController.m
-//  BottomSheet
+//  ZBChangeNetWorkSheetView.m
+//  goodLook
 //
-//  Created by ZB on 2024/6/13.
+//  Created by ZB on 2024/1/3.
 //
 
-#import "ModalViewController.h"
+#import "ZBChangeNetWorkSheetView.h"
 #import "ZBChangeNetWorkCell.h"
 #import <Masonry.h>
+
 #define scrollHeight 240 + kBottomSafeHeight
 
-@interface ModalViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface ZBChangeNetWorkSheetView ()<UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UIControl *maskView;
+@property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIView *contentViews;
 
 @property (nonatomic, strong) UILabel *titleLab;
@@ -25,27 +27,52 @@
 
 @end
 
-@implementation ModalViewController
+@implementation ZBChangeNetWorkSheetView
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.view.backgroundColor = UIColor.whiteColor;
-    UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, CGRectGetWidth(self.view.frame)-30, 300)];
-    lab.text = @"描述：如果自定义停留点的外部输入（例如捕获的属性）发生变化，调用此方法通知表单在下一个布局传递中重新评估停留点。如果 detents 仅包含系统停留点，或者自定义停留点仅使用传入的上下文信息，则无需调用此方法。在 animateChanges: 块中调用此方法以动画方式将自定义停留点调整到新高度。";
-    lab.font = [UIFont systemFontOfSize:18];
-    lab.numberOfLines = 0;
-    lab.lineBreakMode = NSLineBreakByCharWrapping;
-    [self.view addSubview:lab];
-    
-    NSInteger indx = 0;
-    self.selIndex = [NSIndexPath indexPathForRow:indx inSection:0];
-    self.dataArray = @[@"测试环境", @"正式环境"];
-    self.detailArray = @[@"https://api-test.crazeid.com", @"https://neptune.crazeid.com"];
-    [self createUI];
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.frame = CGRectMake(self.frame.origin.x, kScreenH, kScreenW, self.frame.size.height);
+        self.backgroundColor = UIColor.clearColor;
+        NSInteger indx = 0;
+        self.selIndex = [NSIndexPath indexPathForRow:indx inSection:0];
+        self.dataArray = @[@"测试环境", @"正式环境"];
+        self.detailArray = @[@"https://api-test.crazeid.com", @"https://neptune.crazeid.com"];
+        [self createUI];
+    }
+    return self;
 }
 
 - (void)createUI {
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    [window addSubview:self.maskView];
+    [self.maskView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.bottom.trailing.leading.equalTo(window);
+    }];
+    [self.maskView addSubview:self];
+    [self mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.bottom.trailing.equalTo(self.maskView);
+//        make.top.equalTo(self.maskView.mas_bottom).offset(-200 -200 -kBottomSafeHeight);
+        make.top.equalTo(self.maskView.mas_bottom);
+    }];
+    
+    //scrollView
+    self.scrollView = ({
+        UIScrollView *scrollView = [[UIScrollView alloc]init];
+        scrollView.delegate = self;
+        scrollView.backgroundColor = UIColor.clearColor;
+        scrollView.showsVerticalScrollIndicator = NO;
+        scrollView.layer.cornerRadius = 10;
+        scrollView.alwaysBounceVertical = NO;
+        scrollView;
+    });
+    [self addSubview:self.scrollView];
+    
+    [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self);
+    }];
+    
+    //contentViews
     self.contentViews = ({
         UIView *aView = [[UIView alloc] init];
         aView.backgroundColor = UIColor.whiteColor;
@@ -53,12 +80,13 @@
         aView.layer.maskedCorners = kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner;
         aView;
     });
-    [self.view addSubview:self.contentViews];
+    [self.scrollView addSubview:self.contentViews];
     [self.contentViews mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(self.view);
+        make.edges.mas_equalTo(self.scrollView);
         make.width.mas_equalTo(kScreenW);
         make.height.mas_equalTo(scrollHeight);
     }];
+    
     
     [self.contentViews addSubview:self.titleLab];
     [self.titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -115,11 +143,69 @@
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
 }
 
+#pragma mark - UIScrollView
+//此处是scrollview不允许向上滑动
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if ([scrollView isEqual:self.scrollView]) {
+        if (scrollView.contentOffset.y > 0) {
+            scrollView.contentOffset = CGPointMake(0, 0);
+        }
+    }else{
+        if (scrollView.contentOffset.y <= 0) {
+            scrollView.contentOffset = CGPointMake(0, 0);
+            self.scrollView.alwaysBounceVertical = true;
+        }else{
+            self.scrollView.alwaysBounceVertical = false;
+//            self.topLineView.hidden = NO;
+        }
+    }
+}
+
+//此处是scrollview向下滑动超过50则关闭视图
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
+    NSLog(@"scrollView.contentOffset.y:%.2f",scrollView.contentOffset.y);
+    if (scrollView.contentOffset.y <= -50) {
+        [self hideView];
+    }
+}
+
+#pragma mark -
+- (void)showView {
+    CGFloat height = scrollHeight;
+    [UIView animateWithDuration:0.25 animations:^{
+        self.maskView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+        self.frame = CGRectMake(self.frame.origin.x, kScreenH-height, kScreenW, height);
+        [self mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.maskView.mas_bottom).offset(-height);
+        }];
+    }];
+}
+
+- (void)hideView {
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+    [UIView animateWithDuration:0.25 animations:^{
+        self.maskView.alpha = 0.0;
+        self.frame = CGRectMake(self.frame.origin.x, kScreenH, self.frame.size.width, self.frame.size.height);
+    } completion:^(BOOL finished) {
+        [self removeFromSuperview];
+        [self.maskView removeFromSuperview];
+        self.maskView = nil;
+    }];
+}
+
 - (void)doneButtonAction{
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self hideView];
 }
 
 #pragma mark - lazy
+- (UIControl *)maskView {
+    if (!_maskView) {
+        _maskView = [[UIControl alloc] initWithFrame:kScreenBounds];
+        _maskView.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
+        [_maskView addTarget:self action:@selector(hideView) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _maskView;
+}
 
 - (UILabel *)titleLab {
     if (!_titleLab) {
@@ -166,7 +252,7 @@
 }
 
 - (void)dealloc{
-    NSLog(@"喔！我死了");
+    
 }
 
 @end

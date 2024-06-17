@@ -1,10 +1,14 @@
 #import "ViewController.h"
 #import <MapKit/MapKit.h>
-#import "BottomSheetBgView.h"
-#import "TableViewController.h"
-#import "ModalViewController.h"
 
-@interface ViewController ()<SheetDelegate>
+#import "ModalViewController.h"
+#import "ZBChangeNetWorkSheetView.h"
+
+// 半模态视图
+#import "SimpleModalViewController.h"
+#import "SimpleModalAnimator.h"
+
+@interface ViewController ()<UIViewControllerTransitioningDelegate>
 
 @property (nonatomic, strong) MKMapView *mapView;
 @property (nonatomic, assign) CGFloat topDistance;
@@ -12,10 +16,7 @@
 
 @end
 
-@implementation ViewController{
-    BottomSheetBgView *_sheetBgView;
-    NSLayoutConstraint *_sheetBgTopConstraint;
-}
+@implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,17 +24,23 @@
     self.mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.mapView];
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    button.frame = CGRectMake(100, 100, 200, 50);
+    [button setTitle:@"Present Modal" forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(presentModalViewController) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
 }
-
-- (void)bottomSheet:(id)bottomSheet didScrollTo:(CGPoint)contentOffset {
-    self.topDistance = MAX(0, -contentOffset.y);
-}
-
-//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-//    [self showBottomView];
-//}
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+//    
+//    ZBChangeNetWorkSheetView *view = [[ZBChangeNetWorkSheetView alloc]init];
+//    [window addSubview:view];
+//    [view showView];
+//    return;
+    
     ModalViewController *vc = [[ModalViewController alloc] init];
     
     // 设置 UISheetPresentationController
@@ -74,40 +81,26 @@
     [self presentViewController:vc animated:YES completion:nil];
 }
 
-#pragma mark - Private Methods
-
-- (void)showBottomView {
-    // The sheet background
-    _sheetBgView = [[BottomSheetBgView alloc] init];
-    [self.view addSubview:_sheetBgView];
-    _sheetBgView.translatesAutoresizingMaskIntoConstraints = NO;
-    _sheetBgTopConstraint = [_sheetBgView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor];
-    [NSLayoutConstraint activateConstraints:@[
-        _sheetBgTopConstraint,
-        [_sheetBgView.heightAnchor constraintEqualToAnchor:self.view.heightAnchor],
-        [_sheetBgView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor],
-        [_sheetBgView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor]
-    ]];
-    
-    // tableView视图一直延伸到状态栏
-    TableViewController *shortcutsVC = [[TableViewController alloc] init];
-    shortcutsVC.delegate = self;
-    [self addChildViewController:shortcutsVC];
-    self.sheetView = shortcutsVC.view;
-    [self.view addSubview:_sheetView];
-    _sheetView.translatesAutoresizingMaskIntoConstraints = NO;
-    [NSLayoutConstraint activateConstraints:@[
-        [_sheetView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor],
-        [_sheetView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor],
-        [_sheetView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
-        [_sheetView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor]
-    ]];
+#pragma mark - Section
+- (void)presentModalViewController {
+    SimpleModalViewController *modalViewController = [[SimpleModalViewController alloc] init];
+    modalViewController.modalPresentationStyle = UIModalPresentationCustom;
+    modalViewController.transitioningDelegate = self;
+    [self presentViewController:modalViewController animated:YES completion:nil];
 }
 
-- (void)setTopDistance:(CGFloat)topDistance {
-    _topDistance = topDistance;
-    _sheetBgTopConstraint.constant = topDistance;
-    NSLog(@"topDistance：%.2f", topDistance);
+#pragma mark - UIViewControllerTransitioningDelegate
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    SimpleModalAnimator *animator = [[SimpleModalAnimator alloc] init];
+    animator.isPresenting = YES;
+    return animator;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    SimpleModalAnimator *animator = [[SimpleModalAnimator alloc] init];
+    animator.isPresenting = NO;
+    return animator;
 }
 
 @end
