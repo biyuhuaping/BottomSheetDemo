@@ -1,13 +1,13 @@
 //
-//  SimpleModalViewController.m
+//  SimpleModalVC.m
 //  BottomSheet
 //
 //  Created by ZB on 2024/6/17.
 //
 
-#import "SimpleModalViewController.h"
+#import "SimpleModalVC.h"
 
-@interface SimpleModalViewController ()
+@interface SimpleModalVC ()
 
 @property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
 @property (nonatomic, assign) CGFloat initialOffset;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation SimpleModalViewController
+@implementation SimpleModalVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -68,40 +68,25 @@
     }
 }
 
-- (void)handlePanGesture111:(UIPanGestureRecognizer *)gesture {
+// 可以设置多个停留位置的方法，缺少弹性，暂时弃用
+- (void)handlePanGesture2222:(UIPanGestureRecognizer *)gesture {
     CGPoint translation = [gesture translationInView:self.view];
     CGPoint velocity = [gesture velocityInView:self.view];
     
-    static CGFloat initialHeight = 0;
-    static CGFloat maxHeight = 0;
-    
-    if (gesture.state == UIGestureRecognizerStateBegan) {
-        initialHeight = self.sheetView.frame.size.height;
-        maxHeight = CGRectGetHeight(self.view.frame) - 100; // 最大高度
-    }
-    
     switch (gesture.state) {
         case UIGestureRecognizerStateChanged: {
-            CGFloat newHeight = initialHeight - translation.y;
-            if (newHeight < self.initialOffset) {
-                newHeight = self.initialOffset;
-            } else if (newHeight > maxHeight) {
-                newHeight = maxHeight;
-            }
-            CGRect frame = self.sheetView.frame;
-            frame.origin.y = CGRectGetHeight(self.view.frame) - newHeight;
-            frame.size.height = newHeight;
-            self.sheetView.frame = frame;
+            CGFloat newY = self.sheetView.frame.origin.y + translation.y;
+            newY = MIN(MAX(newY, CGRectGetHeight(self.view.frame) - self.maxOffset), CGRectGetHeight(self.view.frame) - self.initialOffset);
+            self.sheetView.frame = CGRectMake(0, newY, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - newY);
+            [gesture setTranslation:CGPointZero inView:self.view];
             break;
         }
         case UIGestureRecognizerStateEnded: {
-            if (velocity.y > 0) {
-                [self dismissViewControllerAnimated:YES completion:nil];
-            } else {
-                [UIView animateWithDuration:0.25 animations:^{
-                    self.sheetView.frame = CGRectMake(0, CGRectGetHeight(self.view.frame) - initialHeight, CGRectGetWidth(self.view.frame), initialHeight);
-                }];
-            }
+            CGFloat targetOffset = [self targetOffsetForCurrentY:self.sheetView.frame.origin.y velocity:velocity.y];
+            [UIView animateWithDuration:0.25 animations:^{
+                CGFloat newY = CGRectGetHeight(self.view.frame) - targetOffset;
+                self.sheetView.frame = CGRectMake(0, newY, CGRectGetWidth(self.view.frame), targetOffset);
+            }];
             break;
         }
         default:
@@ -109,11 +94,35 @@
     }
 }
 
+// 根据当前Y位置和速度来确定目标高度
+- (CGFloat)targetOffsetForCurrentY:(CGFloat)currentY velocity:(CGFloat)velocity {
+    CGFloat currentOffset = CGRectGetHeight(self.view.frame) - currentY;
+    CGFloat closestOffset = self.initialOffset;
+
+    if (fabs(currentOffset - self.midOffset) < fabs(currentOffset - closestOffset)) {
+        closestOffset = self.midOffset;
+    }
+    if (fabs(currentOffset - self.maxOffset) < fabs(currentOffset - closestOffset)) {
+        closestOffset = self.maxOffset;
+    }
+
+    if (velocity > 0) { // 向下滑动
+        if (currentOffset > closestOffset) {
+            closestOffset = currentOffset > self.midOffset ? self.midOffset : self.initialOffset;
+        }
+    } else { // 向上滑动
+        if (currentOffset < closestOffset) {
+            closestOffset = currentOffset < self.midOffset ? self.midOffset : self.maxOffset;
+        }
+    }
+    return closestOffset;
+}
+
+#pragma mark - lazy
 - (UIView *)sheetView{
     if (!_sheetView) {
         UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.frame) - self.initialOffset, CGRectGetWidth(self.view.frame), self.initialOffset)];
         view.backgroundColor = UIColor.whiteColor;
-//        view.userInteractionEnabled = YES;
         view.layer.cornerRadius = 12;
         view.clipsToBounds = YES;
         

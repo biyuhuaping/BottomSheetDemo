@@ -5,7 +5,7 @@
 #import "ZBChangeNetWorkSheetView.h"
 
 // 半模态视图
-#import "SimpleModalViewController.h"
+#import "SimpleModalVC.h"
 #import "SimpleModalAnimator.h"
 
 @interface ViewController ()<UIViewControllerTransitioningDelegate>
@@ -29,7 +29,7 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
     button.frame = CGRectMake(100, 100, 200, 50);
     [button setTitle:@"Present Modal" forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(presentModalViewController) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(presentModalVC) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
 }
 
@@ -82,11 +82,11 @@
 }
 
 #pragma mark - Section
-- (void)presentModalViewController {
-    SimpleModalViewController *modalViewController = [[SimpleModalViewController alloc] init];
-    modalViewController.modalPresentationStyle = UIModalPresentationCustom;
-    modalViewController.transitioningDelegate = self;
-    [self presentViewController:modalViewController animated:YES completion:nil];
+- (void)presentModalVC {
+    SimpleModalVC *modalVC = [[SimpleModalVC alloc] init];
+    modalVC.modalPresentationStyle = UIModalPresentationCustom;
+    modalVC.transitioningDelegate = self;
+    [self presentViewController:modalVC animated:YES completion:nil];
 }
 
 #pragma mark - UIViewControllerTransitioningDelegate

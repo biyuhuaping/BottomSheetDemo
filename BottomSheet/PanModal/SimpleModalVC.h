@@ -1,5 +1,5 @@
 //
-//  SimpleModalViewController.h
+//  SimpleModalVC.h
 //  BottomSheet
 //
 //  Created by ZB on 2024/6/17.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SimpleModalViewController : UIViewController
+@interface SimpleModalVC : UIViewController
 
 @end
 
