@@ -1,18 +1,11 @@
 #import "ViewController.h"
-#import <MapKit/MapKit.h>
-
-#import "ModalViewController.h"
-#import "ZBChangeNetWorkSheetView.h"
 
 // 半模态视图
+#import "ModalViewController.h"
 #import "SimpleModalVC.h"
 #import "SimpleModalAnimator.h"
 
 @interface ViewController ()<UIViewControllerTransitioningDelegate>
-
-@property (nonatomic, strong) MKMapView *mapView;
-@property (nonatomic, assign) CGFloat topDistance;
-@property (nonatomic, strong) UIView *sheetView;
 
 @end
 
@@ -21,28 +14,37 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
-    [self.view addSubview:self.mapView];
-    self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.view.backgroundColor = UIColor.grayColor;
     
-    self.view.backgroundColor = [UIColor whiteColor];
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-    button.frame = CGRectMake(100, 100, 200, 50);
-    [button setTitle:@"Present Modal" forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(presentModalVC) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
+    UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeSystem];
+    btn1.backgroundColor = UIColor.orangeColor;
+    btn1.frame = CGRectMake(20, 100, 80, 50);
+    [btn1 setTitle:@"系统半模态" forState:UIControlStateNormal];
+    [btn1 setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
+    [btn1 addTarget:self action:@selector(presentModalVC1) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn1];
+    
+    UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeSystem];
+    btn2.backgroundColor = UIColor.systemBlueColor;
+    btn2.frame = CGRectMake(120, 100, 80, 50);
+    [btn2 setTitle:@"HW半模态" forState:UIControlStateNormal];
+    [btn2 setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
+    [btn2 addTarget:self action:@selector(presentModalVC2) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn2];
+    
+    UIButton *btn3 = [UIButton buttonWithType:UIButtonTypeSystem];
+    btn3.backgroundColor = UIColor.systemGreenColor;
+    btn3.frame = CGRectMake(220, 100, 80, 50);
+    [btn3 setTitle:@"自定义" forState:UIControlStateNormal];
+    [btn3 setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
+    [btn3 addTarget:self action:@selector(presentModalVC3) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn3];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-//    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-//    
-//    ZBChangeNetWorkSheetView *view = [[ZBChangeNetWorkSheetView alloc]init];
-//    [window addSubview:view];
-//    [view showView];
-//    return;
-    
+#pragma mark - Section
+// 系统半模态
+- (void)presentModalVC1 {
     ModalViewController *vc = [[ModalViewController alloc] init];
-    
     // 设置 UISheetPresentationController
     if (@available(iOS 15.0, *)) {
         if (vc.sheetPresentationController) {
@@ -77,12 +79,19 @@
     } else {
         // Fallback on earlier versions
     }
-    
     [self presentViewController:vc animated:YES completion:nil];
 }
 
-#pragma mark - Section
-- (void)presentModalVC {
+// HW半模态
+- (void)presentModalVC2 {
+    ModalViewController *vc = [[ModalViewController alloc] init];
+    [self presentPanModal:vc completion:^{
+        
+    }];
+}
+
+// 自定义
+- (void)presentModalVC3 {
     SimpleModalVC *modalVC = [[SimpleModalVC alloc] init];
     modalVC.modalPresentationStyle = UIModalPresentationCustom;
     modalVC.transitioningDelegate = self;

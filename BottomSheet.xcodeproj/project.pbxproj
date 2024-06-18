@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		16A4B8209BFE4A98668DBA01 /* libPods-BottomSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4754B614374214BC2008BC35 /* libPods-BottomSheet.a */; };
-		393CBD732C1C24FC00F0EDDA /* ZBChangeNetWorkSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 393CBD712C1C24FC00F0EDDA /* ZBChangeNetWorkSheetView.m */; };
-		393CBD762C1C252700F0EDDA /* ZBChangeNetWorkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 393CBD752C1C252700F0EDDA /* ZBChangeNetWorkCell.m */; };
+		391B1D812C21260900E17505 /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 391B1D802C21260900E17505 /* ModalViewController.m */; };
 		393CBD7B2C1FDF9200F0EDDA /* SimpleModalVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 393CBD7A2C1FDF9200F0EDDA /* SimpleModalVC.m */; };
 		393CBD7E2C1FDFB200F0EDDA /* SimpleModalAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 393CBD7D2C1FDFB200F0EDDA /* SimpleModalAnimator.m */; };
 		3969BFE52869AF9C008EA3DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969BFE42869AF9C008EA3DC /* AppDelegate.m */; };
@@ -18,14 +17,11 @@
 		3969BFF02869AF9E008EA3DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3969BFEF2869AF9E008EA3DC /* Assets.xcassets */; };
 		3969BFF32869AF9E008EA3DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3969BFF12869AF9E008EA3DC /* LaunchScreen.storyboard */; };
 		3969BFF62869AF9E008EA3DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969BFF52869AF9E008EA3DC /* main.m */; };
-		39B8C00D2C1A8A280098914E /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8C00C2C1A8A280098914E /* ModalViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		393CBD712C1C24FC00F0EDDA /* ZBChangeNetWorkSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBChangeNetWorkSheetView.m; sourceTree = "<group>"; };
-		393CBD722C1C24FC00F0EDDA /* ZBChangeNetWorkSheetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBChangeNetWorkSheetView.h; sourceTree = "<group>"; };
-		393CBD742C1C252700F0EDDA /* ZBChangeNetWorkCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBChangeNetWorkCell.h; sourceTree = "<group>"; };
-		393CBD752C1C252700F0EDDA /* ZBChangeNetWorkCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBChangeNetWorkCell.m; sourceTree = "<group>"; };
+		391B1D7F2C21260800E17505 /* ModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalViewController.h; sourceTree = "<group>"; };
+		391B1D802C21260900E17505 /* ModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalViewController.m; sourceTree = "<group>"; };
 		393CBD792C1FDF9200F0EDDA /* SimpleModalVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleModalVC.h; sourceTree = "<group>"; };
 		393CBD7A2C1FDF9200F0EDDA /* SimpleModalVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleModalVC.m; sourceTree = "<group>"; };
 		393CBD7C2C1FDFB200F0EDDA /* SimpleModalAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleModalAnimator.h; sourceTree = "<group>"; };
@@ -40,8 +36,6 @@
 		3969BFF22869AF9E008EA3DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3969BFF42869AF9E008EA3DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3969BFF52869AF9E008EA3DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		39B8C00B2C1A8A280098914E /* ModalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModalViewController.h; sourceTree = "<group>"; };
-		39B8C00C2C1A8A280098914E /* ModalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModalViewController.m; sourceTree = "<group>"; };
 		4754B614374214BC2008BC35 /* libPods-BottomSheet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BottomSheet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D8D8C003D457F6AC3611E83 /* Pods-BottomSheet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BottomSheet.debug.xcconfig"; path = "Target Support Files/Pods-BottomSheet/Pods-BottomSheet.debug.xcconfig"; sourceTree = "<group>"; };
 		E367440E09DDDB57906CBE08 /* Pods-BottomSheet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BottomSheet.release.xcconfig"; path = "Target Support Files/Pods-BottomSheet/Pods-BottomSheet.release.xcconfig"; sourceTree = "<group>"; };
@@ -74,17 +68,6 @@
 				4754B614374214BC2008BC35 /* libPods-BottomSheet.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		393CBD772C1C252F00F0EDDA /* ZBchangeNet */ = {
-			isa = PBXGroup;
-			children = (
-				393CBD742C1C252700F0EDDA /* ZBChangeNetWorkCell.h */,
-				393CBD752C1C252700F0EDDA /* ZBChangeNetWorkCell.m */,
-				393CBD722C1C24FC00F0EDDA /* ZBChangeNetWorkSheetView.h */,
-				393CBD712C1C24FC00F0EDDA /* ZBChangeNetWorkSheetView.m */,
-			);
-			path = ZBchangeNet;
 			sourceTree = "<group>";
 		};
 		393CBD782C1FDF7100F0EDDA /* PanModal */ = {
@@ -123,10 +106,9 @@
 				3969BFE42869AF9C008EA3DC /* AppDelegate.m */,
 				3969BFE92869AF9C008EA3DC /* ViewController.h */,
 				3969BFEA2869AF9C008EA3DC /* ViewController.m */,
-				39B8C00B2C1A8A280098914E /* ModalViewController.h */,
-				39B8C00C2C1A8A280098914E /* ModalViewController.m */,
+				391B1D7F2C21260800E17505 /* ModalViewController.h */,
+				391B1D802C21260900E17505 /* ModalViewController.m */,
 				393CBD782C1FDF7100F0EDDA /* PanModal */,
-				393CBD772C1C252F00F0EDDA /* ZBchangeNet */,
 				3969BFF42869AF9E008EA3DC /* Info.plist */,
 				3969BFEF2869AF9E008EA3DC /* Assets.xcassets */,
 				3969BFF12869AF9E008EA3DC /* LaunchScreen.storyboard */,
@@ -232,11 +214,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				393CBD732C1C24FC00F0EDDA /* ZBChangeNetWorkSheetView.m in Sources */,
 				3969BFEB2869AF9C008EA3DC /* ViewController.m in Sources */,
-				39B8C00D2C1A8A280098914E /* ModalViewController.m in Sources */,
 				393CBD7B2C1FDF9200F0EDDA /* SimpleModalVC.m in Sources */,
-				393CBD762C1C252700F0EDDA /* ZBChangeNetWorkCell.m in Sources */,
+				391B1D812C21260900E17505 /* ModalViewController.m in Sources */,
 				393CBD7E2C1FDFB200F0EDDA /* SimpleModalAnimator.m in Sources */,
 				3969BFE52869AF9C008EA3DC /* AppDelegate.m in Sources */,
 				3969BFF62869AF9E008EA3DC /* main.m in Sources */,
