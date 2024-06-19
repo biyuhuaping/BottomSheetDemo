@@ -3,7 +3,6 @@
 // 半模态视图
 #import "ModalViewController.h"
 #import "SimpleModalVC.h"
-#import "SimpleModalAnimator.h"
 
 @interface ViewController ()<UIViewControllerTransitioningDelegate>
 
@@ -14,19 +13,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = UIColor.grayColor;
+    self.view.backgroundColor = UIColor.systemYellowColor;
     
+    CGFloat width = 80;
+    CGFloat height = 50;
     UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeSystem];
-    btn1.backgroundColor = UIColor.orangeColor;
-    btn1.frame = CGRectMake(20, 100, 80, 50);
-    [btn1 setTitle:@"系统半模态" forState:UIControlStateNormal];
+    btn1.backgroundColor = UIColor.systemOrangeColor;
+    btn1.frame = CGRectMake(40, 150, width, height);
+    [btn1 setTitle:@"自定义" forState:UIControlStateNormal];
     [btn1 setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
     [btn1 addTarget:self action:@selector(presentModalVC1) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn1];
     
     UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeSystem];
     btn2.backgroundColor = UIColor.systemBlueColor;
-    btn2.frame = CGRectMake(120, 100, 80, 50);
+    btn2.frame = CGRectMake(CGRectGetMaxX(btn1.frame)+20, CGRectGetMinY(btn1.frame), width, height);
     [btn2 setTitle:@"HW半模态" forState:UIControlStateNormal];
     [btn2 setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
     [btn2 addTarget:self action:@selector(presentModalVC2) forControlEvents:UIControlEventTouchUpInside];
@@ -34,16 +35,32 @@
     
     UIButton *btn3 = [UIButton buttonWithType:UIButtonTypeSystem];
     btn3.backgroundColor = UIColor.systemGreenColor;
-    btn3.frame = CGRectMake(220, 100, 80, 50);
-    [btn3 setTitle:@"自定义" forState:UIControlStateNormal];
+    btn3.frame = CGRectMake(CGRectGetMaxX(btn2.frame)+20, CGRectGetMinY(btn1.frame), width, height);
+    [btn3 setTitle:@"系统半模态" forState:UIControlStateNormal];
     [btn3 setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
     [btn3 addTarget:self action:@selector(presentModalVC3) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn3];
 }
 
 #pragma mark - Section
-// 系统半模态
+// 自定义
 - (void)presentModalVC1 {
+    SimpleModalVC *modalVC = [[SimpleModalVC alloc] init];
+    modalVC.modalPresentationStyle = UIModalPresentationCustom;
+    modalVC.transitioningDelegate = self;
+    [self presentViewController:modalVC animated:YES completion:nil];
+}
+
+// HW半模态
+- (void)presentModalVC2 {
+    ModalViewController *vc = [[ModalViewController alloc] init];
+    [self presentPanModal:vc completion:^{
+        
+    }];
+}
+
+// 系统半模态
+- (void)presentModalVC3 {
     ModalViewController *vc = [[ModalViewController alloc] init];
     // 设置 UISheetPresentationController
     if (@available(iOS 15.0, *)) {
@@ -80,22 +97,6 @@
         // Fallback on earlier versions
     }
     [self presentViewController:vc animated:YES completion:nil];
-}
-
-// HW半模态
-- (void)presentModalVC2 {
-    ModalViewController *vc = [[ModalViewController alloc] init];
-    [self presentPanModal:vc completion:^{
-        
-    }];
-}
-
-// 自定义
-- (void)presentModalVC3 {
-    SimpleModalVC *modalVC = [[SimpleModalVC alloc] init];
-    modalVC.modalPresentationStyle = UIModalPresentationCustom;
-    modalVC.transitioningDelegate = self;
-    [self presentViewController:modalVC animated:YES completion:nil];
 }
 
 #pragma mark - UIViewControllerTransitioningDelegate
