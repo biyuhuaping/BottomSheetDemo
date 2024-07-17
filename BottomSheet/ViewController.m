@@ -62,14 +62,14 @@
 // 系统半模态
 - (void)presentModalVC3 {
     ModalViewController *vc = [[ModalViewController alloc] init];
-    // 设置 UISheetPresentationController
-    if (@available(iOS 15.0, *)) {
+    if (@available(iOS 16.0, *)) {
+        // 设置 UISheetPresentationController
         if (vc.sheetPresentationController) {
             UISheetPresentationController *sheet = vc.sheetPresentationController;
-            
             // 支持的自定义显示大小
-            if (@available(iOS 16.0, *)) {
+            {
                 UISheetPresentationControllerDetent *smallDetent = [UISheetPresentationControllerDetent customDetentWithIdentifier:@"small" resolver:^CGFloat(id<UISheetPresentationControllerDetentResolutionContext> context) {
+                    // 占上下文最大尺寸的0.2
                     return 0.2 * context.maximumDetentValue;
                 }];
                 
@@ -79,24 +79,34 @@
                     }],
                     smallDetent,
                     [UISheetPresentationControllerDetent customDetentWithIdentifier:nil resolver:^CGFloat(id<UISheetPresentationControllerDetentResolutionContext> context) {
-                        return 0.5 * context.maximumDetentValue; // 占上下文最大尺寸的0.5
+                        // 占上下文最大尺寸的0.5
+                        return 0.5 * context.maximumDetentValue;
                     }],
+                    // 最大停靠点
                     UISheetPresentationControllerDetent.largeDetent
                 ];
-            } else {
-                // Fallback on earlier versions
             }
             
-            sheet.prefersGrabberVisible = YES;//是否在表单顶部显示一个抓手。默认值为 NO
-            sheet.prefersEdgeAttachedInCompactHeight = YES;//在紧凑高度下是否将表单布局为边缘附着样式而不是全屏。默认值为 NO
-            sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = YES;//当边缘附着时，是否允许 preferredContentSize 影响表单的宽度。设置为 NO 时，边缘附着时表单宽度始终等于容器的安全区域宽度。在紧凑宽度和常规高度下，此属性值不被尊重。默认值为 NO
-            sheet.preferredCornerRadius = 10;//表单展示时的首选圆角半径
+            //是否在表单顶部显示一个抓手。默认值为 NO
+            sheet.prefersGrabberVisible = YES;
+            
+            //在紧凑高度下是否将表单布局为边缘附着样式而不是全屏。默认值为 NO
+            sheet.prefersEdgeAttachedInCompactHeight = YES;
+            
+            //当边缘附着时，是否允许 preferredContentSize 影响表单的宽度。设置为 NO 时，边缘附着时表单宽度始终等于容器的安全区域宽度。在紧凑宽度和常规高度下，此属性值不被尊重。默认值为 NO
+            sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = YES;
+            
+            //表单展示时的首选圆角半径
+            sheet.preferredCornerRadius = 10;
+            
+            //控制当包含此属性的视图内的滚动视图（scroll view）滚动到顶部边缘时，是否允许滚动操作扩展视图到更大的detent（停靠点）
             sheet.prefersScrollingExpandsWhenScrolledToEdge = NO;
         }
+        [self presentViewController:vc animated:YES completion:nil];
     } else {
-        // Fallback on earlier versions
+        // HW半模态
+        [self presentPanModal:vc completion:nil];
     }
-    [self presentViewController:vc animated:YES completion:nil];
 }
 
 #pragma mark - UIViewControllerTransitioningDelegate
