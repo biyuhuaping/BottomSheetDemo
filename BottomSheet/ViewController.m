@@ -82,6 +82,8 @@
                         // 占上下文最大尺寸的0.5
                         return 0.5 * context.maximumDetentValue;
                     }],
+                    // 中间停靠点，约为屏幕高度的一半
+                    UISheetPresentationControllerDetent.mediumDetent,
                     // 最大停靠点
                     UISheetPresentationControllerDetent.largeDetent
                 ];
