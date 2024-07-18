@@ -7,8 +7,15 @@
 
 #import "ModalViewController.h"
 #import <Masonry.h>
+#import <TYPagerController/TYPagerController.h>
+#import "TitleView.h"
 
-@interface ModalViewController ()
+@interface ModalViewController ()<TYPagerControllerDelegate, TYPagerControllerDataSource, TitleViewDelegate>
+
+@property (nonatomic, strong) TitleView * titleView;
+@property (nonatomic, strong) TYPagerController * pageController;
+@property (nonatomic, strong) NSMutableArray<NSString *> *pageTitles;
+
 @end
 
 @implementation ModalViewController
@@ -17,12 +24,21 @@
     [super viewDidLoad];
     self.view.backgroundColor = UIColor.whiteColor;
     
-    UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, CGRectGetWidth(self.view.frame)-30, 240)];
-    lab.text = @"描述：如果自定义停留点的外部输入（例如捕获的属性）发生变化，调用此方法通知表单在下一个布局传递中重新评估停留点。如果 detents 仅包含系统停留点，或者自定义停留点仅使用传入的上下文信息，则无需调用此方法。在 animateChanges: 块中调用此方法以动画方式将自定义停留点调整到新高度。";
-    lab.font = [UIFont systemFontOfSize:18];
-    lab.numberOfLines = 0;
-    lab.lineBreakMode = NSLineBreakByCharWrapping;
-    [self.view addSubview:lab];
+//    self.titleView.frame = CGRectMake(0, 0, 200, 44);
+//    self.navigationItem.titleView = self.titleView;
+    [self.view addSubview:self.titleView];
+    [self.titleView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(10);
+        make.centerX.equalTo(self.view);
+        make.width.mas_equalTo(200);
+        make.height.mas_equalTo(34);
+    }];
+    
+    [self.view addSubview:self.pageController.view];
+    [self.pageController.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.titleView.mas_bottom);
+        make.leading.trailing.bottom.equalTo(self.view);
+    }];
 }
 
 #pragma mark - HWPanModalPresentable
@@ -44,6 +60,52 @@
     return PanModalHeightMake(PanModalHeightTypeContent, 240);
 }
 
+#pragma mark - TYPagerControllerDelegate, TYPagerControllerDataSource
+- (NSInteger)numberOfControllersInPagerController {
+    return 2;
+}
+
+- (nonnull UIViewController *)pagerController:(nonnull TYPagerController *)pagerController controllerForIndex:(NSInteger)index prefetching:(BOOL)prefetching {
+    UIViewController * listVC = [[UIViewController alloc] init];
+    listVC.view.backgroundColor = index == 0 ? UIColor.greenColor : UIColor.redColor;
+    return listVC;
+}
+
+- (void)pagerController:(TYPagerController *)pagerController transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex animated:(BOOL)animated {
+    [self.titleView setUnderLineFrameWithfromIndex:fromIndex toIndex:toIndex animated:animated];
+}
+
+- (void)pagerController:(TYPagerController *)pagerController transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress {
+    [self.titleView setUnderLineFrameWithfromIndex:fromIndex toIndex:toIndex progress:progress];
+}
+
+#pragma mark - YBMShopListTitleViewDelegate
+- (void)shopSelectItemFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex {
+    [self.pageController scrollToControllerAtIndex:toIndex animate:YES];
+}
+
+#pragma mark - lazy
+- (TitleView *)titleView {
+    if(!_titleView) {
+        _titleView = [[TitleView alloc] init];
+        _titleView.delegate = self;
+    }
+    return _titleView;
+}
+
+- (TYPagerController *)pageController {
+    if (!_pageController) {
+        _pageController = [[TYPagerController alloc] init];
+        _pageController.delegate = self;
+        _pageController.dataSource = self;
+        _pageController.view.backgroundColor = [UIColor whiteColor];
+        _pageController.layout.addVisibleItemOnlyWhenScrollAnimatedEnd = YES;
+        [self addChildViewController:_pageController];
+    }
+    return _pageController;
+}
+
+#pragma mark -
 - (void)dealloc{
     NSLog(@"喔！我死了");
 }
