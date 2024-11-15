@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TitleView : UIView
 
+@property (nonatomic, copy) NSArray *titleArray;
+
 @property (nonatomic, weak) id<TitleViewDelegate> delegate;
 
 - (void)setUnderLineFrameWithfromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress;

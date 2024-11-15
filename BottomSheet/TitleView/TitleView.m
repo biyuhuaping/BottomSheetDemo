@@ -26,18 +26,19 @@ const CGFloat ShopSilderWidth = 18.0;
     if (self) {
         self.curIndex = 0;
         self.backgroundColor = UIColor.whiteColor;
-        [self addSubview:self.silderView];
-        [self configItems];
     }
     return self;
 }
 
-- (void)configItems {
-    NSArray *titleNames = @[@"自营", @"合作商家"].copy;
-    for (NSInteger index = 0; index < titleNames.count; index ++) {
+- (void)setTitleArray:(NSArray *)titleArray{
+    _titleArray = titleArray;
+    [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self addSubview:self.silderView];
+
+    for (NSInteger index = 0; index < titleArray.count; index ++) {
         TitleItem * item = [[TitleItem alloc] init];
         item.tag = index;
-        item.name = titleNames[index];
+        item.name = titleArray[index];
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapItemAction:)];
         [item addGestureRecognizer:tap];
         

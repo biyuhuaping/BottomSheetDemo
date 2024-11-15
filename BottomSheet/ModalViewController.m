@@ -30,7 +30,7 @@
     [self.titleView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(10);
         make.centerX.equalTo(self.view);
-        make.width.mas_equalTo(200);
+        make.width.mas_equalTo(375);
         make.height.mas_equalTo(34);
     }];
     
@@ -39,6 +39,12 @@
         make.top.mas_equalTo(self.titleView.mas_bottom);
         make.leading.trailing.bottom.equalTo(self.view);
     }];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.titleView.titleArray = @[@"自营", @"合作商家", @"商家"];
+    [self.pageController reloadData];
 }
 
 #pragma mark - HWPanModalPresentable
@@ -62,12 +68,15 @@
 
 #pragma mark - TYPagerControllerDelegate, TYPagerControllerDataSource
 - (NSInteger)numberOfControllersInPagerController {
-    return 2;
+    return self.titleView.titleArray.count;
 }
 
 - (nonnull UIViewController *)pagerController:(nonnull TYPagerController *)pagerController controllerForIndex:(NSInteger)index prefetching:(BOOL)prefetching {
     UIViewController * listVC = [[UIViewController alloc] init];
-    listVC.view.backgroundColor = index == 0 ? UIColor.greenColor : UIColor.redColor;
+    listVC.view.backgroundColor = [UIColor colorWithRed:arc4random_uniform(256)/255.0
+                                                  green:arc4random_uniform(256)/255.0
+                                                   blue:arc4random_uniform(256)/255.0
+                                                  alpha:1.0];
     return listVC;
 }
 
