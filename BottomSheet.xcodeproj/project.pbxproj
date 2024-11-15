@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		16A4B8209BFE4A98668DBA01 /* libPods-BottomSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4754B614374214BC2008BC35 /* libPods-BottomSheet.a */; };
 		391B1D812C21260900E17505 /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 391B1D802C21260900E17505 /* ModalViewController.m */; };
+		3937CAEC2CE7465B002EFD84 /* CouponSheetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3937CAEB2CE7465B002EFD84 /* CouponSheetVC.m */; };
 		393CBD7B2C1FDF9200F0EDDA /* SimpleModalVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 393CBD7A2C1FDF9200F0EDDA /* SimpleModalVC.m */; };
 		393CBD7E2C1FDFB200F0EDDA /* SimpleModalAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 393CBD7D2C1FDFB200F0EDDA /* SimpleModalAnimator.m */; };
 		3969BFE52869AF9C008EA3DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969BFE42869AF9C008EA3DC /* AppDelegate.m */; };
@@ -24,6 +25,8 @@
 /* Begin PBXFileReference section */
 		391B1D7F2C21260800E17505 /* ModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalViewController.h; sourceTree = "<group>"; };
 		391B1D802C21260900E17505 /* ModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalViewController.m; sourceTree = "<group>"; };
+		3937CAEA2CE7465B002EFD84 /* CouponSheetVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CouponSheetVC.h; sourceTree = "<group>"; };
+		3937CAEB2CE7465B002EFD84 /* CouponSheetVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CouponSheetVC.m; sourceTree = "<group>"; };
 		393CBD792C1FDF9200F0EDDA /* SimpleModalVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleModalVC.h; sourceTree = "<group>"; };
 		393CBD7A2C1FDF9200F0EDDA /* SimpleModalVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleModalVC.m; sourceTree = "<group>"; };
 		393CBD7C2C1FDFB200F0EDDA /* SimpleModalAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleModalAnimator.h; sourceTree = "<group>"; };
@@ -114,6 +117,8 @@
 				3969BFEA2869AF9C008EA3DC /* ViewController.m */,
 				391B1D7F2C21260800E17505 /* ModalViewController.h */,
 				391B1D802C21260900E17505 /* ModalViewController.m */,
+				3937CAEA2CE7465B002EFD84 /* CouponSheetVC.h */,
+				3937CAEB2CE7465B002EFD84 /* CouponSheetVC.m */,
 				39B798592C49035B006568DB /* TitleView */,
 				393CBD782C1FDF7100F0EDDA /* PanModal */,
 				3969BFF42869AF9E008EA3DC /* Info.plist */,
@@ -233,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3969BFEB2869AF9C008EA3DC /* ViewController.m in Sources */,
+				3937CAEC2CE7465B002EFD84 /* CouponSheetVC.m in Sources */,
 				393CBD7B2C1FDF9200F0EDDA /* SimpleModalVC.m in Sources */,
 				391B1D812C21260900E17505 /* ModalViewController.m in Sources */,
 				393CBD7E2C1FDFB200F0EDDA /* SimpleModalAnimator.m in Sources */,

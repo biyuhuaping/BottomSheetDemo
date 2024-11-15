@@ -4,6 +4,8 @@
 #import "ModalViewController.h"
 #import "SimpleModalVC.h"
 
+#import "CouponSheetVC.h"
+
 @interface ViewController ()<UIViewControllerTransitioningDelegate>
 
 @end
@@ -19,7 +21,7 @@
     CGFloat height = 50;
     UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeSystem];
     btn1.backgroundColor = UIColor.systemOrangeColor;
-    btn1.frame = CGRectMake(40, 150, width, height);
+    btn1.frame = CGRectMake(20, 150, width, height);
     [btn1 setTitle:@"自定义" forState:UIControlStateNormal];
     [btn1 setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
     [btn1 addTarget:self action:@selector(presentModalVC1) forControlEvents:UIControlEventTouchUpInside];
@@ -27,7 +29,7 @@
     
     UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeSystem];
     btn2.backgroundColor = UIColor.systemBlueColor;
-    btn2.frame = CGRectMake(CGRectGetMaxX(btn1.frame)+20, CGRectGetMinY(btn1.frame), width, height);
+    btn2.frame = CGRectMake(CGRectGetMaxX(btn1.frame)+10, CGRectGetMinY(btn1.frame), width, height);
     [btn2 setTitle:@"HW半模态" forState:UIControlStateNormal];
     [btn2 setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
     [btn2 addTarget:self action:@selector(presentModalVC2) forControlEvents:UIControlEventTouchUpInside];
@@ -35,11 +37,19 @@
     
     UIButton *btn3 = [UIButton buttonWithType:UIButtonTypeSystem];
     btn3.backgroundColor = UIColor.systemGreenColor;
-    btn3.frame = CGRectMake(CGRectGetMaxX(btn2.frame)+20, CGRectGetMinY(btn1.frame), width, height);
+    btn3.frame = CGRectMake(CGRectGetMaxX(btn2.frame)+10, CGRectGetMinY(btn1.frame), width, height);
     [btn3 setTitle:@"系统半模态" forState:UIControlStateNormal];
     [btn3 setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
     [btn3 addTarget:self action:@selector(presentModalVC3) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn3];
+    
+    UIButton *btn4 = [UIButton buttonWithType:UIButtonTypeSystem];
+    btn4.backgroundColor = UIColor.systemGreenColor;
+    btn4.frame = CGRectMake(CGRectGetMaxX(btn3.frame)+10, CGRectGetMinY(btn1.frame), width, height);
+    [btn4 setTitle:@"present" forState:UIControlStateNormal];
+    [btn4 setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
+    [btn4 addTarget:self action:@selector(presentModalVC4) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn4];
 }
 
 #pragma mark - Section
@@ -109,6 +119,12 @@
         // HW半模态
         [self presentPanModal:vc completion:nil];
     }
+}
+
+- (void)presentModalVC4 {
+    CouponSheetVC *vc = [[CouponSheetVC alloc] init];
+    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 #pragma mark - UIViewControllerTransitioningDelegate

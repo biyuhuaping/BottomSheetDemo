@@ -107,7 +107,7 @@
 
 #pragma mark -
 - (void)dealloc{
-    NSLog(@"喔！我死了");
+    NSLog(@"喔！ModalViewController死了");
 }
 
 @end
